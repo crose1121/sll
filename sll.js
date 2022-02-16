@@ -5,7 +5,6 @@ class Node {
     }
 }
 
-
 class SLL {
     constructor(){
         this.head = null;
@@ -27,10 +26,8 @@ class SLL {
             while(runner.next != null){ //in other words (while runner is not the last node)
                 runner = runner.next //this moves runner to the next node
             }
-
             //by the time while loop is done, we will have runner pointing to the last node
             runner.next = newNode;
-
         }
     }
 
@@ -70,6 +67,25 @@ class SLL {
                 return;
             }
         }
+    }
+
+    reverse(){
+        // next, current variables
+
+        let runner = this.head;
+        let nextNode = runner.next;
+        let previousNode = null;
+
+        while(runner.next != null){
+            runner.next = previousNode;
+            previousNode= runner;
+            runner = nextNode;
+            nextNode = nextNode.next;
+
+        }
+        runner.next = previousNode;
+        this.head = runner;
+
     }
 }
 
